@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles2.css">
+<title>🏓 PopPong Pro - The Ultimate Table Tennis Showdown</title>
+</head>
+
+<body>
+<div id="exitBtn" onclick="exitGame()">✕</div>
+<div id="soundBtn" onclick="toggleMute()">🔊</div>
+<div id="score" style="min-height:42px; margin-top: 15px;">
+  <span>0 : 0</span>
+  <span id="powerupTimer" style="display: none;"></span>
+</div>
+<div style="position: relative; display: block; margin-top: 15px;">
+  <canvas id="game" width="500" height="700"></canvas>
+  
+  <div id="mobileControls">
+    <div class="mobileBtn" id="leftBtn">◀</div>
+    <div class="mobileBtn" id="rightBtn">▶</div>
+  </div>
+  
+  <div id="pauseBtn" onclick="togglePause()">⏸</div>
+</div>
+
+<div id="gameOverModal">
+  <h2 id="modalTitle">GAME OVER</h2>
+  <p id="modalMessage"></p>
+  <p class="result" id="modalResult"></p>
+</div>
+
+<div id="overlay">
+  <h1>🏓 PopPong Pro</h1>
+  <h2>Select Difficulty</h2>
+  <p id="highscore"></p>
+  <button onclick="startGame('easy')">Easy</button>
+  <button onclick="startGame('medium')">Medium</button>
+  <button onclick="startGame('hard')">Hard</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

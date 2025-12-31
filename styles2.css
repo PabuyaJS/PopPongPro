@@ -1,0 +1,248 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #141e30, #243b55);
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-Y: hidden;
+  max-height: 100vh;
+}
+
+canvas {
+  background: #0b3d91;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  display: block;
+  margin: 0 auto;
+  max-width: 96%;
+  height: auto;
+}
+
+button {
+  background: #1abc9c;
+  border: none;
+  padding: 14px 24px;
+  margin: 6px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: #16a085;
+}
+
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+#score {
+  margin: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+#powerupTimer {
+  font-size: 16px;
+  padding: 5px 12px;
+  border-radius: 20px;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.1); }
+}
+
+#gameOverModal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(20, 30, 48, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px 60px;
+  border-radius: 20px;
+  box-shadow: 0 0 50px rgba(0,0,0,0.8);
+  z-index: 200;
+  text-align: center;
+  display: none;
+  border: 3px solid;
+  animation: modalPop 0.3s ease-out;
+}
+
+@keyframes modalPop {
+  0% { transform: translate(-50%, -50%) scale(0.5); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+}
+
+#gameOverModal h2 {
+  font-size: 42px;
+  margin: 0 0 20px 0;
+  letter-spacing: 2px;
+}
+
+#gameOverModal p {
+  font-size: 28px;
+  margin: 15px 0;
+}
+
+#gameOverModal .result {
+  font-size: 32px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  z-index: 2000;
+  pointer-events: none;
+  animation: confettiFall 3s linear forwards;
+}
+
+@keyframes confettiFall {
+  0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+#mobileControls {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  max-width: 100%;
+  padding: 0 20px;
+  box-sizing: border-box;
+  z-index: 50;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.mobileBtn {
+  width: 70px;
+  height: 70px;
+  background: rgba(255,255,255,0.25);
+  border-radius: 50%;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  backdrop-filter: blur(10px);
+}
+
+.mobileBtn:active {
+  background: rgba(255,255,255,0.4);
+}
+
+#pauseBtn {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  background: rgba(241, 196, 15, 0.3);
+  border-radius: 50%;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 50;
+  user-select: none;
+  transition: background 0.2s;
+  backdrop-filter: blur(10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#exitBtn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  background: rgba(231, 76, 60, 0.8);
+  border-radius: 50%;
+  font-size: 24px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 150;
+  user-select: none;
+  transition: background 0.2s;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: bold;
+}
+
+#soundBtn {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  width: 50px;
+  height: 50px;
+  background: #1abc9c;
+  border-radius: 50%;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 150;
+  user-select: none;
+  transition: background 0.2s;
+  backdrop-filter: blur(10px);
+  color: white;
+  font-weight: bold;
+}
+
+#exitBtn.active {
+  display: flex;
+}
+
+#exitBtn:active {
+  background: rgba(231, 76, 60, 1);
+}
+
+#pauseBtn:active {
+  background: rgba(241, 196, 15, 0.5);
+}
+
+#soundBtn:active {
+  background: #1abc9c;;
+}
+
+
+@media (max-width: 600px) {
+  canvas {
+    width: 100vw;
+    height: auto;
+  }
+  
+  #score {
+    font-size: 18px;
+    position: relative;
+    z-index: 10;
+    flex-wrap: wrap;
+  }
+  
+}
